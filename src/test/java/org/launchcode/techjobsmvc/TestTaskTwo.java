@@ -51,6 +51,7 @@ public class TestTaskTwo {
      * */
     @Test
     public void testJobListingDisplaysAllJobFields () throws Exception {
+
         mockMvc.perform(get("/list/jobs?column=coreCompetency&value=Ruby"))
                 .andExpect(status().isOk())
                 .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), '3')]").exists())
@@ -59,6 +60,7 @@ public class TestTaskTwo {
                 .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Portland')]").exists())
                 .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Web - Front End')]").exists())
                 .andExpect(xpath("//table[contains(@class, 'job-listing')][1]/tr/td[contains(text(), 'Ruby')]").exists());
+
     }
 
     /*
@@ -82,7 +84,9 @@ public class TestTaskTwo {
         mockMvc.perform(get("/list"))
                 .andExpect(status().isOk())
                 .andExpect(xpath("//table/tr/td//a[starts-with(@href, '/list/jobs?column=all')]").exists());
+
     }
+
 
 }
 
